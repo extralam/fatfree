@@ -1,0 +1,22 @@
+version: '2'
+services:
+  fatfree-default:
+    image: richarvey/nginx-php-fpm:latest
+    container_name: fatfree-default
+    ports: 
+      # - 3000:80
+      # - 3443:443
+      # - 3999:9000
+    volumes:
+      - ../:/var/www/html
+    environment:
+      - WEBROOT=/var/www/html/public_html
+    networks:
+      - front-tier
+      - back-tier
+
+networks:
+  front-tier:
+    driver: bridge
+  back-tier:
+    driver: bridge
