@@ -1,5 +1,7 @@
 <?php
 
+require_once "helpers.php";
+
 /*
 
 	Copyright (c) 2009-2016 F3::Factory/Bong Cosca, All rights reserved.

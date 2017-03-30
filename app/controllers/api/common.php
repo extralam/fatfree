@@ -5,7 +5,7 @@ namespace api;
 class Common extends BaseController{
 
     function get() {
-        $this->onSuccess("GET");
+        $this->onSuccess("GET " . \Base::instance()->get('PARAMS.item'));
     }
     function post() {
         $this->onSuccess("POST");
