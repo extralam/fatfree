@@ -8,6 +8,6 @@ abstract class BaseModel extends Illuminate\Database\Eloquent\Model{
     function __construct() {
         $this->table = $this->getTableName();
     }
-    
+
 
 }

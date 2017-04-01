@@ -1,22 +1,44 @@
 version: '2'
+
 services:
-  fatfree-default:
+  lamfatfree:
     image: richarvey/nginx-php-fpm:latest
-    container_name: fatfree-default
+    container_name: lamfatfree
     ports: 
-      - 3000:80
-      - 3443:443
-      - 3999:9000
+      - 8000:80
+      - 8443:443
+      - 8900:9000
     volumes:
       - ../:/var/www/html
     environment:
       - WEBROOT=/var/www/html/public_html
     networks:
-      - front-tier
-      - back-tier
+      - front
+      - back
+      - db
+
+  lamfatfree_redis:
+    image: redis:latest
+    container_name: lamfatfree_redis
+    ports: 
+      - 6379
+    networks:
+      - back
+
+  lamfatfree_mysql:
+    image: mysql:8
+    container_name: lamfatfree_mysql
+    environment: 
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=fatfree 
+    networks:
+      - db
+
 
 networks:
-  front-tier:
+  db:
     driver: bridge
-  back-tier:
+  front:
+    driver: bridge
+  back:
     driver: bridge

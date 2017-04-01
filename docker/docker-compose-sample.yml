@@ -2,21 +2,41 @@ version: '2'
 services:
   fatfree-default:
     image: richarvey/nginx-php-fpm:latest
-    container_name: fatfree-default
+    container_name: fatfree
     ports: 
-      # - 3000:80
-      # - 3443:443
-      # - 3999:9000
+      - 800:80
+      - 843:443
+      - 890:9000
     volumes:
       - ../:/var/www/html
     environment:
       - WEBROOT=/var/www/html/public_html
     networks:
-      - front-tier
-      - back-tier
+      - front
+      - back
+      - db
+
+services: 
+  fatfree-redis-default:
+    image: redis:latest
+    container_name: fatfree-redis
+    ports: 
+      - 6379
+    networks:
+      - back
+
+services: 
+  fatfree-mysql-default:
+    image: mysql:8
+    container_name: fatfree-mysql
+    networks:
+      - db
+
 
 networks:
-  front-tier:
+  db:
     driver: bridge
-  back-tier:
+  front:
+    driver: bridge
+  back:
     driver: bridge
