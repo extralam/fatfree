@@ -35,9 +35,6 @@ try{
 	$capsule->bootEloquent();
 	$f3->set('DB',$capsule);
 
-	// first init , plz uncomment this
-	// Phpq::up();
-
 	$f3->run();
 } catch(Exception $e) {
     // DO SOMETHING IF EXCEPTION

@@ -4,6 +4,10 @@ namespace web;
 
 class Phpq extends BaseController{
 
+    function createTable($f3){
+	    \Phpq::up();
+    }
+
 	function add($f3){
 		$args = array('name' => 'Hello');
 		$token = \Resque::enqueue('default', 'My_Job', $args, true);
