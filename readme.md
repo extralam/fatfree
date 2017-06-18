@@ -40,7 +40,7 @@ For Detail please check https://github.com/bcosca/fatfree
 - "illuminate/database": "*",           // https://github.com/illuminate/database
 - "illuminate/events": "*",
 - "chrisboulton/php-resque": "1.2.x"   // https://github.com/chrisboulton/php-resque
-
+- "phpmailer/phpmailer" : "*" // Add Phpmailer as default email tools
 
 ### Default url now [routing setup under route.ini]
 [web]
