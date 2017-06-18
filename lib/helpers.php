@@ -939,9 +939,28 @@ if (! function_exists('with')) {
     }
 }
 
+if (! function_exists('remember')) {
+    function remember( $name , $ttl = 0 , $function_call){
+        $cache_key = md5($name);
+        if(!$output = Cache::instance()->get($cache_key)) {
+            $output = $function_call();
+            Cache::instance()->set($cache_key , $output , $ttl);
+        }
+        return $output;
+    }
+}
 
-if (!function_exists('dd')) {
-    function dd($blah, $die = true) {
+if (! function_exists('forget')) {
+    function forget( $name ){
+        $cache_key = md5($name);
+        if(Cache::instance()->exists($cache_key)) {
+            Cache::instance()->clear($cache_key);
+        }
+    }
+}
+
+if (!function_exists('debug_r')) {
+    function debug_r($blah, $die = true) {
         # insert span tags
         $output = '';
         $output = '<span class="die_value">'.$output;

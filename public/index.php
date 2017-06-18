@@ -38,6 +38,6 @@ try{
 	$f3->run();
 } catch(Exception $e) {
     // DO SOMETHING IF EXCEPTION
-	dd($e);
+	debug_r($e);
 }
 
